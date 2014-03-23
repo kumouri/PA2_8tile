@@ -61,7 +61,7 @@ Modifications:
 
         ; add successors of current node to OPEN
         (dolist (child (generate-successors (node-state curNode)))
-
+        
             ; for each child node
             (setq child (make-node :state child :parent (node-state curNode)))
 

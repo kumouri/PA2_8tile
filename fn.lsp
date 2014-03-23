@@ -4,6 +4,11 @@
     )
 )
 
+(defun is-child? (state open closed)
+(
+    
+)
+
 (defun generate-successors (state)
     (let ((pos (position 0 state)) 
           (listCopy (copy-list state))
@@ -15,9 +20,10 @@
             (cond ((and (<= (+ pos i) 8) (>= (+ pos i) 0)) ;if new position within grid
                         (setf listCopy (copy-list state)) ;recopy state
                         (rotatef (nth pos listCopy) (nth (+ pos i) listCopy)); switch elements
-                        (setf childList (append childList (list (make-node :state listCopy :parent 'curNode))))
+                        (setf childList (append childList (list listCopy)))
                   )       
             )
-        )        
+        )
+        (return-from generate-successors childList)    
     )
 )
