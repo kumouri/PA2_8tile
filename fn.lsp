@@ -29,8 +29,6 @@
 )
 
 (defun formatted-output (path)
-	(
-	)
 	#|
 	path is a list of a list, any number of nodes with 9 numbers per node
 	Display 3 nodes per line
@@ -45,7 +43,7 @@
 			(for k = 0; k < 3; k++)		// Group of 3 numbers per line per node
 			{
 				output [ path[i * 3 + j][k * 3] path[i * 3 + j][k * 3] path[i * 3 + j][k * 3] ]
-				if(j = 2)				// If we're on the second line
+				if(j == 2)				// If we're on the second line
 				{
 					output " => "
 				}
@@ -58,4 +56,28 @@
 	}
 	|#
 	
+	(dotimes (i (ceiling (/ (length 'path) 3.0)) nil)
+		(dotimes (j 3 nil)
+			(format t "[ ~D ~D ~D ]" )
+			; if j == 2
+			(format t "[ ~D ~D ~D ]" )
+			; if j == 2
+			(format t "[ ~D ~D ~D ]~%" )
+		)
+		(format "~%~%~%")
+	)
+	
 )
+
+
+
+
+
+
+
+
+
+
+
+
+
