@@ -27,3 +27,35 @@
         (return-from generate-successors childList)    
     )
 )
+
+(defun formatted-output (path)
+	(
+	)
+	#|
+	path is a list of a list, any number of nodes with 9 numbers per node
+	Display 3 nodes per line
+	[ 1 2 3 ]    [ 1 2 3 ]    [ 1 2 3 ]
+	[ 4 5 6 ] => [ 4 5 6 ] => [ 4 5 6 ]
+	[ 7 8   ]    [ 7 8   ]    [ 7 8   ]
+	That's 0 3 6 of each of 0 1 2 nodes
+	(for i = 0; i < numNodes / 3; i++)	// Group of 3 nodes
+	{
+		(for j = 0; j < 3; j++)			// Group of 3 lines for the node
+		{
+			(for k = 0; k < 3; k++)		// Group of 3 numbers per line per node
+			{
+				output [ path[i * 3 + j][k * 3] path[i * 3 + j][k * 3] path[i * 3 + j][k * 3] ]
+				if(j = 2)				// If we're on the second line
+				{
+					output " => "
+				}
+				else					// If we aren't on the second line
+				{
+					output "    "
+				}
+			}
+		}
+	}
+	|#
+	
+)
