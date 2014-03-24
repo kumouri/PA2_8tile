@@ -5,7 +5,6 @@
 )
 
 (defun is-child? (state open closed)
-(
     
 )
 
@@ -56,15 +55,62 @@
 	}
 	|#
 	
-	(dotimes (i (ceiling (/ (length 'path) 3.0)) nil)
+	(dotimes (i (ceiling (/ (length path) 4.0)) nil)
 		(dotimes (j 3 nil)
-			(format t "[ ~D ~D ~D ]" )
-			; if j == 2
-			(format t "[ ~D ~D ~D ]" )
-			; if j == 2
-			(format t "[ ~D ~D ~D ]~%" )
+        
+            ;(if (null (nth (+ 0 (* i 3)) path)) (return-from formatted-output nil) ())
+			(format t "[ ~D ~D ~D ]"
+                (nth (+ 0 (* j 3)) (nth (+ 0 (* i 3)) path))
+                (nth (+ 1 (* j 3)) (nth (+ 0 (* i 3)) path))
+                (nth (+ 2 (* j 3)) (nth (+ 0 (* i 3)) path))
+            )
+            
+            (if (null (nth (+ 1 (* i 3)) path))
+                ()
+                (let ()
+                    (if (eq j 1)
+                        (format t " => ")
+                        (format t "    ")
+                    )
+                    (format t "[ ~D ~D ~D ]"
+                        (nth (+ 0 (* j 3)) (nth (+ 1 (* i 3)) path))
+                        (nth (+ 1 (* j 3)) (nth (+ 1 (* i 3)) path))
+                        (nth (+ 2 (* j 3)) (nth (+ 1 (* i 3)) path))
+                    )
+                )
+            )
+            
+            (if (null (nth (+ 2 (* i 3)) path))
+                ()
+                (let ()
+                    (if (eq j 1)
+                        (format t " => ")
+                        (format t "    ")
+                    )
+                    (format t "[ ~D ~D ~D ]"
+                        (nth (+ 0 (* j 3)) (nth (+ 2 (* i 3)) path))
+                        (nth (+ 1 (* j 3)) (nth (+ 2 (* i 3)) path))
+                        (nth (+ 2 (* j 3)) (nth (+ 2 (* i 3)) path))
+                    )
+                )
+            )
+            
+            (if (null (nth (+ i 3) path))
+                (format t "~%")
+                (let ()
+                    (if (eq j 1)
+                        (format t " => ")
+                        (format t "    ")
+                    )
+                    (format t "[ ~D ~D ~D ]~%"
+                        (nth (+ 0 (* j 3)) (nth (+ i 3) path))
+                        (nth (+ 1 (* j 3)) (nth (+ i 3) path))
+                        (nth (+ 2 (* j 3)) (nth (+ i 3) path))
+                    )
+                )
+            )
 		)
-		(format "~%~%~%")
+		(format t "~%~%~%")
 	)
 	
 )
